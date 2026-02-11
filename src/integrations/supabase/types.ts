@@ -56,6 +56,13 @@ export type Database = {
             referencedRelation: "folders"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "documents_folder_id_fkey"
+            columns: ["folder_id"]
+            isOneToOne: false
+            referencedRelation: "folders_safe"
+            referencedColumns: ["id"]
+          },
         ]
       }
       folders: {
@@ -153,7 +160,66 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      folders_safe: {
+        Row: {
+          color: string | null
+          created_at: string | null
+          icon: string | null
+          id: string | null
+          is_default: boolean | null
+          name: string | null
+          updated_at: string | null
+          user_id: string | null
+        }
+        Insert: {
+          color?: string | null
+          created_at?: string | null
+          icon?: string | null
+          id?: string | null
+          is_default?: boolean | null
+          name?: string | null
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          color?: string | null
+          created_at?: string | null
+          icon?: string | null
+          id?: string | null
+          is_default?: boolean | null
+          name?: string | null
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      user_settings_safe: {
+        Row: {
+          app_lock_enabled: boolean | null
+          biometric_enabled: boolean | null
+          created_at: string | null
+          id: string | null
+          updated_at: string | null
+          user_id: string | null
+        }
+        Insert: {
+          app_lock_enabled?: boolean | null
+          biometric_enabled?: boolean | null
+          created_at?: string | null
+          id?: string | null
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          app_lock_enabled?: boolean | null
+          biometric_enabled?: boolean | null
+          created_at?: string | null
+          id?: string | null
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       [_ in never]: never
